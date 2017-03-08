@@ -14,7 +14,7 @@ const users = require('./routes/users');
 const app = express();
 
 // this gives me req.session
-app.use(cookieSession({ secret: 'keyboard cat' }));
+app.use(cookieSession({ secret: 'keyboardcat' }));
 
 const passport = require('passport')
 
@@ -26,8 +26,8 @@ passport.use(new GitHubStrategy(
 
   // filling in the blanks on the GitHub strategy
   {
-    clientID: '4f161039cf6b984c6148',
-    clientSecret: 'd27e76c849f63ce37014cf4045921bc07222a67c',
+    clientID: 'db5b45831ec4685b52fe',
+    clientSecret: '1fb5db0b71e09039dc06efdb6d067c8cd97eaf2c',
     callbackURL: 'http://localhost:3000/auth/github/callback',
     userAgent: 'lunch-demo.example.com'
   },
@@ -46,15 +46,15 @@ app.use(passport.session());
 
 // take in whatever was passed into `done` inside the GitHubStrategy config
 passport.serializeUser((object, done) => {
-  console.log("Serialize User", {token: object.token, id: object.profile.id})
+  console.log("Serialize User", {token: object})
 
   // when I call `done` _here_, I am passing in the data to be saved to the session
-  done(null, {token: object.token, id: object.profile.id})
+  done(null, {token: object.token})
 })
 
 passport.deserializeUser((object, done) => {
   console.log("Deserialize User", object)
-  done(null, object.id)
+  done(null, object)
 })
 
 // Just redirects to github
