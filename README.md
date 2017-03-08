@@ -1,5 +1,17 @@
 # OAuth with Passport
 
+## What is oauth?
+OAuth is an open standard for authorization, commonly used as a way for Internet users to authorize websites or applications to access their information on other websites but without giving them the passwords.
+
+## Why is Oauth useful?
+[Why Oauth](https://www.mashery.com/blog/why-oauth-20)
+
+### Simplicity
+When choosing an authentication protocol, the goal is to avoid heavy lifting on the development end, as well as make it easy on the API user once implemented into the flow. The last thing a user wants to do is to have to remember a new username and password in order to access a webservice.
+
+### Security
+OAuth 2.0 is also quite secure. We’re all familiar with valet services, and the so-called valet key that most cars come with. This key often only allows the car to be driven a particular distance, and typically does not unlock the trunk and glove box. OAuth is often referred to as a valet key for the web in that it grants an application access to protected data only for specific uses and often for a limited amount of time. For example, a browser game or mobile app will often request permission to access your Facebook profile and contacts. However, once you comply, the app cannot use that data for anything more than allowing you to play the game with friends and possibly post your in-game achievements to your Facebook page. Also, authentication via OAuth2.0 never requires actually passing user credentials from one app to another. Once the authentication and validation process begins, the user is driven to a secure URL where credentials are requested, but those credentials are never shared outside of that secure URL. Some people may see the decision to make tokens long-lived as a potential security concern. Supporting long-lived tokens or refresh tokens depends on the nature of your application, security constraints, and revenue models, among other factors. It’s early in our developer program’s lifespan, and a key to a successful API program is adapting quickly.  
+
 ![](sequence-diagram.png)
 
 > **NOTE**: The steps below correspond to the numbers in the diagram
