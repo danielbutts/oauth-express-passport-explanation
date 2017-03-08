@@ -33,7 +33,7 @@ passport.use(new GitHubStrategy(
   },
 
   // after both API calls were made
-  function(token, refreshToken, profile, done) {
+  function onSuccessfulLogin(token, refreshToken, profile, done) {
     // I've processed the initial login of the user
     // This happens once
     done(null, {token, profile});
@@ -67,8 +67,7 @@ app.get('/auth/github', passport.authenticate('github'));
 
 // makes 2 api calls to github
 app.get('/auth/github/callback',
-  passport.authenticate('github', { successRedirect: '/',
-                                      failureRedirect: '/login' }));
+  passport.authenticate('github', { successRedirect: '/', failureRedirect: '/login' }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

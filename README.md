@@ -112,11 +112,9 @@ Now that you have API data, you need to do something with it:
 
       // This is a great place to find or create a user in the database
       // This function happens once after a successful login
-      User.findOrCreateBy(profile.email).then(user => {
 
-        // Whatever you pass to `done` gets passed to `serializeUser`
-        done(null, {token, user});
-      })
+      // Whatever you pass to `done` gets passed to `serializeUser`
+      done(null, {token, user});
     }
   ));
 ```
@@ -157,7 +155,7 @@ app.use(cookieSession({ secret: 'keyboard cat' }));
 app.use(passport.session())
 
 passport.serializeUser((object, done) => {
-  done(null, {token: object.token, id: object.profile.id})
+  done(null, {token: object.token})
 })
 ```
 
@@ -177,9 +175,7 @@ So every request will trigger the function: `deserializeUser`:
 
 ```js
 passport.deserializeUser((object, done) => {
-  User.findById(object.id).then(user => {
-    done(null, user)
-  })
+    done(null, object)
 })
 ```
 
